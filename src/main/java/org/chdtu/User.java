@@ -28,7 +28,6 @@ public class User {
         return settings;
     }
 
-    @Autowired
     public void setSettings(UserSettings settings) {
         this.settings = settings;
     }

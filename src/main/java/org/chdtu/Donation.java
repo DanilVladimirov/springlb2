@@ -52,7 +52,6 @@ public class Donation {
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
-    @Autowired
     public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
