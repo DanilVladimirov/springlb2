@@ -3,8 +3,10 @@ package org.chdtu;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
+@PropertySource("classpath:myApp.properties")
 public class AppConfig {
     @Bean(name = "adminSettings")
     public UserSettings settingsAdminUser() {
@@ -27,21 +29,19 @@ public class AppConfig {
         donationConfig.setName("базовий конфіг");
         donationConfig.setSumFrom(100F);
         donationConfig.setTextColor("#FFF");
-        donationConfig.setUser(user);
         return donationConfig;
     }
 
     @Bean(name = "monoMethod")
     public PaymentMethod monoPayment() {
         MonobankPaymentMethod monobankPaymentMethod = new MonobankPaymentMethod();
-        monobankPaymentMethod.setTax(0.0F);
         return monobankPaymentMethod;
     }
 
     @Bean(name = "liqpayMethod")
     public PaymentMethod liqpayPayment() {
         LiqpayPaymentMethod liqpayPaymentMethod = new LiqpayPaymentMethod();
-        liqpayPaymentMethod.setTax(0.0F);
+//        liqpayPaymentMethod.setTax(0.0F);
         return liqpayPaymentMethod;
     }
 
@@ -50,12 +50,11 @@ public class AppConfig {
             @Qualifier("firstDonationConfig") DonationConfig config,
             @Qualifier("monoMethod") PaymentMethod paymentMethod
     ) {
-        Donation donation = new Donation();
+        Donation donation = new Donation(paymentMethod);
         donation.setUsername("Kozak1337");
         donation.setText("дякую за твій контент.");
         donation.setSum(101.5F);
         donation.setConfig(config);
-        donation.setPaymentMethod(paymentMethod);
         return donation;
     }
 
@@ -64,12 +63,11 @@ public class AppConfig {
             @Qualifier("firstDonationConfig") DonationConfig config,
             @Qualifier("liqpayMethod") PaymentMethod paymentMethod
     ) {
-        Donation donation = new Donation();
+        Donation donation = new Donation(paymentMethod);
         donation.setUsername("Taras Shevchenko");
         donation.setText("дяка.");
         donation.setSum(110.5F);
         donation.setConfig(config);
-        donation.setPaymentMethod(paymentMethod);
         return donation;
     }
 }

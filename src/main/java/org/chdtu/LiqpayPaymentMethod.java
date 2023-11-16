@@ -1,5 +1,6 @@
 package org.chdtu;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -7,6 +8,7 @@ import javax.annotation.PreDestroy;
 
 @Component
 public class LiqpayPaymentMethod implements PaymentMethod {
+    @Value("${liqpayPaymentMethod.tax}")
     private Float tax;
 
     public LiqpayPaymentMethod() {
@@ -15,10 +17,6 @@ public class LiqpayPaymentMethod implements PaymentMethod {
 
     public Float getTax() {
         return tax;
-    }
-
-    public void setTax(Float tax) {
-        this.tax = tax;
     }
 
     @PostConstruct

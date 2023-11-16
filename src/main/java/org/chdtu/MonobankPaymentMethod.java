@@ -1,5 +1,6 @@
 package org.chdtu;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -7,6 +8,7 @@ import javax.annotation.PreDestroy;
 
 @Component
 public class MonobankPaymentMethod implements PaymentMethod {
+    @Value("${monoPaymentMethod.tax}")
     private Float tax;
 
     public MonobankPaymentMethod() {

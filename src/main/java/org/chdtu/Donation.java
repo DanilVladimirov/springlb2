@@ -13,7 +13,8 @@ public class Donation {
     private DonationConfig config;
     private PaymentMethod paymentMethod;
 
-    public Donation() {
+    public Donation(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
         System.out.println("Donation bean is created");
     }
 
@@ -51,9 +52,6 @@ public class Donation {
 
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
-    }
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
     }
 
     @PostConstruct

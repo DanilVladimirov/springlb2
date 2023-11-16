@@ -1,5 +1,6 @@
 package org.chdtu;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -11,6 +12,7 @@ public class DonationConfig {
     private Float sumFrom;
     private String textColor;
 
+    @Autowired
     private User user;
 
     public DonationConfig() {
