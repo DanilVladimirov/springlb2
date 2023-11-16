@@ -58,11 +58,11 @@ public class Donation {
 
     @PostConstruct
     public void init(){
-        System.out.println("Class UserSettings: init method");
+        System.out.println("Class Donation: init method");
     }
 
     @PreDestroy
     public void destroy(){
-        System.out.println("Class UserSettings: destroy method");
+        System.out.println("Class Donation: destroy method");
     }
 }
